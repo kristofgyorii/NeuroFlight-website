@@ -33,9 +33,9 @@ using its onboard Pi camera modul to analyse and recognise objects.
 
 | Module | Status | Notes |
 |---------|:------:|-------|
-| Frame / assembly | ⚙️ | 5″ carbon frame + 3D-printed body parts, landing gears in progress |
-| Electronics | ✅ | F405 HD FC + 45 A ESC |
-| Edge compute (Pi Zero 2 W + Cam) | ⚙️ | getting started with YOLO |
+| Frame / assembly | ⚙️ | 5″ carbon frame + 3D-printed body parts done, landing gears in progress |
+| Electronics | ✅ | Done |
+| Edge Image Recognition (Pi Zero 2 W + Cam) | ⚙️ | getting started with YOLO |
 | Power distribution / UBEC | ⚙️ | after Pi is finished |
 | AI OSD overlay | ⚙️ | in concept, will be developed in future |
 
