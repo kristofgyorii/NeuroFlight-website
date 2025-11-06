@@ -6,36 +6,29 @@
   <title>NeuroFlight | Quad-Vision 1.0</title>
   <meta name="description" content="NeuroFlight – Quad-Vision 1.0 showcase: gallery, modules, contact." />
   <style>
-    :root {
-      --bg: #0b0d10; --panel: #11151a; --text: #e6eef8; --muted: #9fb3c8;
-      --brand: #6ee7ff; --brand-2: #8b5cf6;
-      --ok:#34d399; --warn:#f59e0b; --err:#ef4444;
-      --stroke:1px; --radius:16px;
-      --shadow: 0 20px 40px rgba(0,0,0,.35), inset 0 0 0 var(--stroke) rgba(255,255,255,.05);
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-      --sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
+    :root { --bg:#0b0d10; --panel:#11151a; --text:#e6eef8; --muted:#9fb3c8; --brand:#6ee7ff; --brand-2:#8b5cf6;
+      --stroke:1px; --radius:16px; --shadow:0 20px 40px rgba(0,0,0,.35), inset 0 0 0 var(--stroke) rgba(255,255,255,.05);
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";}
     @media (prefers-color-scheme: light){
-      :root{--bg:#f7fafc;--panel:#ffffff;--text:#0d1117;--muted:#4b5563;
-        --shadow:0 10px 30px rgba(0,0,0,.08), inset 0 0 0 var(--stroke) rgba(0,0,0,.06);}
+      :root{--bg:#f7fafc;--panel:#fff;--text:#0d1117;--muted:#4b5563;
+      --shadow:0 10px 30px rgba(0,0,0,.08), inset 0 0 0 var(--stroke) rgba(0,0,0,.06);}
     }
     *{box-sizing:border-box}
-    html,body{
-      background: radial-gradient(1200px 800px at 80% -10%, rgba(110,231,255,.15), transparent 60%),
-                  radial-gradient(800px 600px at -10% 10%, rgba(139,92,246,.18), transparent 60%), var(--bg);
-      color:var(--text); font-family:var(--sans); margin:0;
-    }
+    html,body{background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(110,231,255,.15), transparent 60%),
+      radial-gradient(800px 600px at -10% 10%, rgba(139,92,246,.18), transparent 60%), var(--bg);
+      color:var(--text); font-family:var(--sans); margin:0;}
     a{color:var(--brand); text-decoration:none} a:hover{text-decoration:underline}
     .container{width:min(1100px,92%); margin:0 auto}
-    .nav{position:sticky; top:0; backdrop-filter: blur(10px);
+    .nav{position:sticky; top:0; backdrop-filter:blur(10px);
       background:linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.15));
       border-bottom:1px solid rgba(255,255,255,.05); z-index:50;}
     .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.5px;}
     .brand img{height:32px; width:auto; display:block}
     .badge{font-size:12px; padding:4px 8px; border-radius:999px;
-      background:linear-gradient(90deg,var(--brand),var(--brand-2));
-      color:#0b0d10; font-weight:700;}
+      background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0d10; font-weight:700;}
     .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
     .nav a{color:var(--text); opacity:.85}
     .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px;
@@ -51,7 +44,6 @@
     .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border-radius:var(--radius); box-shadow:var(--shadow); padding:18px;
       border:1px solid rgba(255,255,255,.08);}
-    .card h3{margin:0 0 6px}
     .panel{display:grid; gap:18px; grid-template-columns:1.1fr .9fr; align-items:stretch}
     @media (max-width:900px){.panel{grid-template-columns:1fr}}
     .imageFrame{border-radius:var(--radius); overflow:hidden; background:#0b0d10;
@@ -63,7 +55,7 @@
     .section h2{margin:0 0 12px; font-size:clamp(22px,3vw,32px)}
     .kicker{font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); font-weight:700}
     .mono{font-family:var(--mono); font-size:13px}
-    .split{display:grid; gap:18px; grid-template-columns:1fr} /* simple list layout */
+    .split{display:grid; gap:18px; grid-template-columns:1fr}
     .footer{margin-top:30px; padding:50px 0 70px; color:var(--muted); text-align:center}
     .nav-toggle{display:none}
     @media (max-width:720px){
@@ -97,7 +89,7 @@
       <h1>Quad-Vision 1.0 — intelligent, modular drone platform with image recognition</h1>
       <p>
         NeuroFlight Quad-Vision 1.0 is a lightweight yet robust FPV/research quadcopter for
-        <strong>real-time vision</strong>, <strong>telemetry</strong>.
+        <strong>real-time vision</strong> and <strong>telemetry</strong>.
       </p>
       <div class="hero-cta">
         <a class="btn primary" href="#modules">Jump to modules</a>
@@ -111,22 +103,14 @@
       <div class="card">
         <h3>Quick facts</h3>
         <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px;">
-          <div>
-            <div class="mono">Weight</div><strong>~<span id="m_mass">367</span> g/<span id="m_mass">542</span> g (AUW)</strong>
-          </div>
-          <div>
-            <div class="mono">Flight time</div><strong>6–12 minutes</strong>
-          </div>
-          <div>
-            <div class="mono">Frame</div><strong>5" carbon (True-X)</strong>
-          </div>
-          <div>
-            <div class="mono">Video</div><strong>Walksnail Avatar HD</strong>
-          </div>
+          <div><div class="mono">Weight</div><strong>~<span id="m_mass">367</span> g / <span id="m_auw">542</span> g (AUW)</strong></div>
+          <div><div class="mono">Flight time</div><strong>6–12 minutes</strong></div>
+          <div><div class="mono">Frame</div><strong>5" carbon (True-X)</strong></div>
+          <div><div class="mono">Video</div><strong>Walksnail Avatar HD</strong></div>
         </div>
         <div class="chips" style="margin-top:12px">
           <span class="chip">Edge: Raspberry Pi Zero 2 W</span>
-          <span class="chip">FC: F405/F722</span>
+          <span class="chip">FC: Kakute F405/F722</span>
           <span class="chip">ESC: 45A BLHeli-S</span>
           <span class="chip">Motors: 2207 1750KV</span>
           <span class="chip">Prop: 5×3.6–5×4.3</span>
@@ -160,20 +144,22 @@
     <section id="contact" class="section">
       <h2>Contact</h2>
       <div class="card">
-        <form class="grid" style="grid-template-columns:1fr 1fr; gap:12px"
-              onsubmit="event.preventDefault(); alert('Thanks! We will get back to you soon.');">
+        <form id="contactForm" class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
           <label>Your name
             <input required name="name" placeholder="Name" style="width:100%" class="input" />
           </label>
           <label>Email
             <input required type="email" name="email" placeholder="you@example.com" style="width:100%" class="input" />
           </label>
+          <!-- Honeypot (leave empty) -->
+          <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
           <label style="grid-column:1/-1">Message
             <textarea required name="msg" rows="5" placeholder="How can we help?" style="width:100%"></textarea>
           </label>
           <div style="display:flex; gap:12px; align-items:center">
-            <button class="btn primary" type="submit">Send message</button>
+            <button id="submitBtn" class="btn primary" type="submit">Send message</button>
             <span class="mono" id="buildTag">build: 2025-November</span>
+            <span class="mono" id="formStatus" aria-live="polite"></span>
           </div>
         </form>
       </div>
@@ -190,10 +176,43 @@
     const toggle = document.getElementById('navToggle');
     toggle?.addEventListener('click', () => nav.classList.toggle('open'));
     document.getElementById('year').textContent = new Date().getFullYear();
+
     // Query helper: e.g. ?mass=410 updates the "Weight" number.
     const params = new URLSearchParams(location.search);
     const mass = params.get('mass');
     if (mass) document.getElementById('m_mass').textContent = mass;
+
+    // Contact form -> POST to /api/contact.php
+    const form = document.getElementById('contactForm');
+    const btn  = document.getElementById('submitBtn');
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '';
+      btn.disabled = true; btn.textContent = 'Sending…';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch('/api/contact.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.ok) {
+          statusEl.textContent = 'Thank you! Message sent.';
+          form.reset();
+        } else {
+          statusEl.textContent = 'Send failed: ' + (json.error || 'unknown error');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Network error.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Send message';
+      }
+    });
   </script>
 </body>
 </html>
