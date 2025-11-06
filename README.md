@@ -29,7 +29,7 @@ using its onboard Pi camera modul to analyse and recognise objects.
 
 ---
 
-## Current Status (2025 Q4)
+## Current Status (2025 November)
 
 | Module | Status | Notes |
 |---------|:------:|-------|
