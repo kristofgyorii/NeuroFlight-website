@@ -43,16 +43,20 @@
     /* Középre igazított márka (csak logo + név) */
     .brand-center{
       position:absolute; left:50%; transform:translateX(-50%);
-      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px;
+      display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px;
     }
-    .brand-center img{height:32px; width:auto; display:block}
+    .brand-center img{height:48px; width:auto; display:block}
+    /* Mobilon arányosan kisebb */
+    @media (max-width:720px){
+      .brand-center{position:static; transform:none; margin:0 auto}
+      .brand-center img{height:38px}
+    }
 
     /* jobb oldali menü */
     .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0; margin-left:auto}
     .nav a{color:var(--text); opacity:.85}
 
     .nav-toggle{display:none}
-
     @media (max-width:720px){
       .nav ul{display:none}
       .nav-toggle{
@@ -67,7 +71,6 @@
         background:var(--panel); padding:14px; border-radius:12px;
         border:1px solid rgba(255,255,255,.08)
       }
-      .brand-center{position:static; transform:none; margin:0 auto}
     }
 
     /* ===== UI ===== */
@@ -153,7 +156,7 @@
         <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px;">
           <div><div class="mono">Weight</div><strong>~<span id="m_mass">367</span> g / <span id="m_auw">542</span> g (AUW)</strong></div>
           <div><div class="mono">Flight time</div><strong>6–12 minutes</strong></div>
-          <div><div class="mono">Frame</div><strong>5" carbon (True-X)</strong></div>
+          <div><div class="mono">Frame</div><strong>5&quot; carbon (True-X)</strong></div>
           <div><div class="mono">Video</div><strong>Walksnail Avatar HD</strong></div>
         </div>
         <div class="chips" style="margin-top:12px">
@@ -172,15 +175,15 @@
         <div class="card">
           <h3>Component list</h3>
           <ul style="margin:0; padding-left:18px; line-height:1.6">
-            <li><strong>Frame:</strong> TBS Source One 5" Frame V5.1</li>
+            <li><strong>Frame:</strong> TBS Source One 5&quot; Frame V5.1</li>
             <li><strong>Motors:</strong> T-motor Pacer V2 P2207 1750KV Freestyle</li>
             <li><strong>Propellers:</strong> HQProp ETHIX P3B 5.1×3×2</li>
-            <li><strong>Stack (FC & ESC):</strong> Kakute F722 + Tekko32 F4 50A (Holybro, refurbished)</li>
+            <li><strong>Stack (FC &amp; ESC):</strong> Kakute F722 + Tekko32 F4 50A (Holybro, refurbished)</li>
             <li><strong>Digital camera:</strong> Walksnail Avatar HD Nano Kit V3</li>
             <li><strong>Receiver:</strong> RadioMaster ELRS 2.4G RP1 V2 Nano</li>
             <li><strong>Controller:</strong> RadioMaster Zorro-ELRS</li>
             <li><strong>FPV goggles:</strong> Walksnail Avatar HD Goggles L</li>
-            <li><strong>GPS & compass:</strong> Matek GNSS & Compass M10Q-5883</li>
+            <li><strong>GPS &amp; compass:</strong> Matek GNSS &amp; Compass M10Q-5883</li>
             <li><strong>Battery:</strong> CNHL Black Series V2.0 — 1500 mAh 4S 130C</li>
             <li><strong>Current limiter:</strong> TBS Smoke Stopper</li>
             <li><strong>Other:</strong> XT60 cable, 35V 1000 µF filtering capacitor</li>
