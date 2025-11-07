@@ -22,10 +22,10 @@ using its onboard Pi camera modul to analyse and recognise objects.
 - 🧱 **Modular hardware design:** replaceable AI, camera, and power modules  
 - 🎥 **HD FPV system:** Walksnail Avatar HD Nano V3  
 - 🧮 **Edge AI:** Raspberry Pi Zero 2 W + Camera Module 3 (wide or normal)  
-- 🧭 **Sensor suite:** u-blox M10 GNSS, ICM-42688-P IMU, DPS310 barometer  
-- ⚙️ **Flight controller:** GEPRC / Matek F405 HD V2 (Betaflight 4.5)  
+- 🧭 **Sensor suite:** Barometer, GPS, accelerometer  
+- ⚙️ **Flight controller:** Betaflight
 - 🔋 **Power:** 4S LiPo 1500 mAh
-- 🔧 **AI pipeline:** YOLO-n Tiny @ 416 p (20–30 FPS on Pi Zero 2 W)
+- 🔧 **AI pipeline:** YOLO on Pi Zero 2W
 
 ---
 
