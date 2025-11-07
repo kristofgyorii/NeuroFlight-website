@@ -1,56 +1,266 @@
-<style>
-  /* --- ADD THIS BELOW YOUR EXISTING ROOT DEFINITIONS --- */
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-  }
-  .brand-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-weight: 800;
-    letter-spacing: .5px;
-    flex: 1;
-  }
-  .brand-center img {
-    height: 36px;
-    width: auto;
-    display: block;
-  }
-  .nav ul {
-    display: flex;
-    gap: 18px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .nav a {
-    color: var(--text);
-    opacity: .85;
-  }
-  /* Gradient text for Quad-Vision 1.0 */
-  .gradient-text {
-    background: linear-gradient(90deg, var(--brand), var(--brand-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroFlight | Quad-Vision 1.0</title>
+  <meta name="description" content="NeuroFlight – Quad-Vision 1.0 showcase: gallery, modules, contact." />
+  <style>
+    :root {
+      --bg:#0b0d10; --panel:#11151a; --text:#e6eef8; --muted:#9fb3c8;
+      --brand:#6ee7ff; --brand-2:#8b5cf6;
+      --stroke:1px; --radius:16px;
+      --shadow:0 20px 40px rgba(0,0,0,.35), inset 0 0 0 var(--stroke) rgba(255,255,255,.05);
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+    }
+    @media (prefers-color-scheme: light){
+      :root{--bg:#f7fafc;--panel:#fff;--text:#0d1117;--muted:#4b5563;
+      --shadow:0 10px 30px rgba(0,0,0,.08), inset 0 0 0 var(--stroke) rgba(0,0,0,.06);}
+    }
+    *{box-sizing:border-box}
+    html,body{
+      background:
+        radial-gradient(1200px 800px at 80% -10%, rgba(110,231,255,.15), transparent 60%),
+        radial-gradient(800px 600px at -10% 10%, rgba(139,92,246,.18), transparent 60%),
+        var(--bg);
+      color:var(--text); font-family:var(--sans); margin:0;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
 
-<header class="nav">
-  <div class="container nav-inner">
-    <div class="brand-center">
-      <img src="neuroflight_logo_white.png" alt="NeuroFlight logo">
-      <span>NeuroFlight</span>
+    .container{width:min(1100px,92%); margin:0 auto}
+
+    /* ===== NAVBAR ===== */
+    .nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(0,0,0,.4), rgba(0,0,0,.15));
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between; padding:14px 0; position:relative;
+    }
+    /* Középre igazított márka (csak logo + név) */
+    .brand-center{
+      position:absolute; left:50%; transform:translateX(-50%);
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px;
+    }
+    .brand-center img{height:32px; width:auto; display:block}
+
+    /* jobb oldali menü */
+    .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0; margin-left:auto}
+    .nav a{color:var(--text); opacity:.85}
+
+    .nav-toggle{display:none}
+
+    @media (max-width:720px){
+      .nav ul{display:none}
+      .nav-toggle{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:10px 14px; border-radius:12px; margin-left:auto;
+        border:1px solid rgba(255,255,255,.08);
+        background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+        color:var(--text); font-weight:600;
+      }
+      .nav.open ul{
+        display:flex; flex-direction:column; position:absolute; right:4%; top:56px;
+        background:var(--panel); padding:14px; border-radius:12px;
+        border:1px solid rgba(255,255,255,.08)
+      }
+      .brand-center{position:static; transform:none; margin:0 auto}
+    }
+
+    /* ===== UI ===== */
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow); color:var(--text); font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#0b0d10; border:none}
+    .grid{display:grid; gap:20px}
+
+    .hero{padding:80px 0 30px; text-align:center}
+    .hero h1{font-size:clamp(32px,5vw,56px); line-height:1.05; margin:0}
+    .hero p{color:var(--muted); font-size:18px; max-width:760px; margin:14px auto 26px}
+    .hero-cta{display:flex; justify-content:center; gap:12px; flex-wrap:wrap}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:var(--radius); box-shadow:var(--shadow); padding:18px;
+      border:1px solid rgba(255,255,255,.08);}
+
+    .panel{display:grid; gap:18px; grid-template-columns:1.1fr .9fr; align-items:stretch}
+    @media (max-width:900px){.panel{grid-template-columns:1fr}}
+
+    .imageFrame{border-radius:var(--radius); overflow:hidden; background:#0b0d10;
+      border:1px dashed rgba(255,255,255,.12); aspect-ratio:16/9; display:grid; place-items:center; color:var(--muted)}
+
+    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{padding:6px 10px; font-size:12px; border-radius:999px; background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08)}
+
+    .section{padding:40px 0}
+    .section h2{margin:0 0 12px; font-size:clamp(22px,3vw,32px)}
+    .kicker{font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand); font-weight:700}
+    .mono{font-family:var(--mono); font-size:13px}
+    .split{display:grid; gap:18px; grid-template-columns:1fr}
+
+    .footer{margin-top:30px; padding:50px 0 70px; color:var(--muted); text-align:center}
+
+    /* Gradient text a címhez */
+    .gradient-text{
+      background:linear-gradient(90deg, var(--brand), var(--brand-2));
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand-center">
+        <img src="neuroflight_logo_white.png" alt="NeuroFlight logo">
+        <span>NeuroFlight</span>
+      </div>
+      <button class="nav-toggle" id="navToggle">Menu</button>
+      <ul>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <ul>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#modules">Modules</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</header>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="container">
+    <section class="hero">
+      <span class="kicker">AI-ready FPV / research platform</span>
+      <h1><span class="gradient-text">Quad-Vision 1.0</span> — intelligent, modular drone platform with image recognition</h1>
+      <p>
+        NeuroFlight Quad-Vision 1.0 is a lightweight yet robust FPV/research quadcopter for
+        <strong>real-time vision</strong> and <strong>telemetry</strong>.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#modules">Jump to modules</a>
+      </div>
+    </section>
+
+    <section id="gallery" class="section panel">
+      <div class="imageFrame">
+        <small>Image will come here: <span class="mono">/img/quad-vision-hero.jpg</span></small>
+      </div>
+      <div class="card">
+        <h3>Quick facts</h3>
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap:12px;">
+          <div><div class="mono">Weight</div><strong>~<span id="m_mass">367</span> g / <span id="m_auw">542</span> g (AUW)</strong></div>
+          <div><div class="mono">Flight time</div><strong>6–12 minutes</strong></div>
+          <div><div class="mono">Frame</div><strong>5" carbon (True-X)</strong></div>
+          <div><div class="mono">Video</div><strong>Walksnail Avatar HD</strong></div>
+        </div>
+        <div class="chips" style="margin-top:12px">
+          <span class="chip">Edge: Raspberry Pi Zero 2 W</span>
+          <span class="chip">FC: Kakute F405/F722</span>
+          <span class="chip">ESC: 45A BLHeli-S</span>
+          <span class="chip">Motors: 2207 1750KV</span>
+          <span class="chip">Prop: 5×3.6–5×4.3</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="modules" class="section">
+      <h2>Modules</h2>
+      <div class="split">
+        <div class="card">
+          <h3>Component list</h3>
+          <ul style="margin:0; padding-left:18px; line-height:1.6">
+            <li><strong>Frame:</strong> TBS Source One 5" Frame V5.1</li>
+            <li><strong>Motors:</strong> T-motor Pacer V2 P2207 1750KV Freestyle</li>
+            <li><strong>Propellers:</strong> HQProp ETHIX P3B 5.1×3×2</li>
+            <li><strong>Stack (FC & ESC):</strong> Kakute F722 + Tekko32 F4 50A (Holybro, refurbished)</li>
+            <li><strong>Digital camera:</strong> Walksnail Avatar HD Nano Kit V3</li>
+            <li><strong>Receiver:</strong> RadioMaster ELRS 2.4G RP1 V2 Nano</li>
+            <li><strong>Controller:</strong> RadioMaster Zorro-ELRS</li>
+            <li><strong>FPV goggles:</strong> Walksnail Avatar HD Goggles L</li>
+            <li><strong>GPS & compass:</strong> Matek GNSS & Compass M10Q-5883</li>
+            <li><strong>Battery:</strong> CNHL Black Series V2.0 — 1500 mAh 4S 130C</li>
+            <li><strong>Current limiter:</strong> TBS Smoke Stopper</li>
+            <li><strong>Other:</strong> XT60 cable, 35V 1000 µF filtering capacitor</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="card">
+        <form id="contactForm" class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+          <label>Your name
+            <input required name="name" placeholder="Name" style="width:100%" class="input" />
+          </label>
+          <label>Email
+            <input required type="email" name="email" placeholder="you@example.com" style="width:100%" class="input" />
+          </label>
+          <!-- Honeypot -->
+          <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+          <label style="grid-column:1/-1">Message
+            <textarea required name="msg" rows="5" placeholder="How can we help?" style="width:100%"></textarea>
+          </label>
+          <div style="display:flex; gap:12px; align-items:center">
+            <button id="submitBtn" class="btn primary" type="submit">Send message</button>
+            <span class="mono" id="buildTag">build: 2025-November</span>
+            <span class="mono" id="formStatus" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="footer">
+      <p>© <span id="year"></span> NeuroFlight — Quad-Vision 1.0. All rights reserved.</p>
+      <p style="margin-top:6px">Crafted in Budapest. ✦</p>
+    </section>
+  </main>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    const toggle = document.getElementById('navToggle');
+    toggle?.addEventListener('click', () => nav.classList.toggle('open'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // URL param helper: ?mass=410
+    const params = new URLSearchParams(location.search);
+    const mass = params.get('mass');
+    if (mass) document.getElementById('m_mass').textContent = mass;
+
+    // Contact form -> POST to /api/contact.php
+    const form = document.getElementById('contactForm');
+    const btn  = document.getElementById('submitBtn');
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = '';
+      btn.disabled = true; btn.textContent = 'Sending…';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch('/api/contact.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.ok) {
+          statusEl.textContent = 'Thank you! Message sent.';
+          form.reset();
+        } else {
+          statusEl.textContent = 'Send failed: ' + (json.error || 'unknown error');
+        }
+      } catch (err) {
+        statusEl.textContent = 'Network error.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Send message';
+      }
+    });
+  </script>
+</body>
+</html>
